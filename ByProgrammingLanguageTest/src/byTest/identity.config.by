@@ -1,0 +1,10 @@
+﻿ku byTest
+{
+    system biao identity.config "身份配置表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string mode "模式")
+    {
+        
+    }
+}

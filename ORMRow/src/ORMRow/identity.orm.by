@@ -1,0 +1,11 @@
+﻿ku ORMRow
+{
+    system biao identity.orm "身份 orm 表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string[] tables "表源项"
+    , string[] elements "选择列")
+    {
+        { sceneNews, newsCommentOrm, {  comment a,news b }, { string  stringValue ,int intValue ,decimal decimalValue } }
+    }
+}

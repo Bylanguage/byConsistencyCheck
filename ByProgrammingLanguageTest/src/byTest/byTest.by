@@ -1,0 +1,8 @@
+﻿ku byTest
+{
+    system biao byTest "库引用表" (
+    string[] references "库名称")
+    {
+        
+    }
+}

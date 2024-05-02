@@ -1,0 +1,32 @@
+﻿ku byTest
+{
+    system biao identity.component "身份构件表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string[] scenes "场景"
+    , string type "类型"
+    , string[] constraints "约束")
+    {
+        { testTable, iID ,, by.identity.ID, { specific:int } }
+        { testTable, iChar,, by.identity.Attribute, { specific:char } }
+        { testTable, iByte,, by.identity.Attribute, { specific:byte } }
+        { testTable, iShort,, by.identity.Attribute, { specific:short } }
+        { testTable, iint ,, by.identity.Attribute, {specific:int  } }
+        { testTable, iLong, ,by.identity.Attribute, {specific:long  } }
+        { testTable, iFloat,, by.identity.Attribute, { specific:float } }
+        { testTable, iDouble,, by.identity.Attribute, { specific:double } }
+        { testTable, idecimal ,, by.identity.Attribute, {specific:decimal  } }
+        { testTable, ibool, ,by.identity.Attribute, {specific:bool  } }
+        { testTable, iDatatime ,, by.identity.Attribute, {specific:datetime  } }              
+        { testTable, iString"string" ,, by.identity.Attribute, {specific:string  } }
+        { testTable, iEnum , ,by.identity.Attribute, {specific:DayOfWeek  } }
+
+        { testOrm, iID,, by.identity.ID, { specific:byte } }
+        { testOrm, iNO,, by.identity.NO, { specific:short } }
+        { testOrm, iName, ,by.identity.Attribute, { specific:char } }
+        
+        
+        
+       // { tString, rTestTable "用于连库验证",testTable, {  } }
+    }
+}

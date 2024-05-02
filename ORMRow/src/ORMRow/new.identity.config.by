@@ -1,0 +1,25 @@
+﻿ku ORMRow
+{
+    new biao identity.config "身份实例配置表" (
+    string belong "所属身份实例"
+    , string name "名称"
+    , string table "表"
+    , string flow "数据流")
+    {
+        { sceneNews, select, sceneNews,  }
+        { category, selectPopup, category,  }
+        { category, select, category,  }
+        { webUI, select, webUI,  }
+        { webUI, selectPopup, webUI,  }
+        { columns, select, columns,  }
+        { columns, selectPopup, columns,  }
+        { columnsNews, selectLeft, columnsNews,  }
+        { columnsNews, selectRight, columnsNews,  }
+        { columnsNews, insert, columnsNews,  }
+        { columnsNews, update, columnsNews,  }
+        { columnsNews, delete, columnsNews,  }
+        { news, select, news,  }
+        { video, select, video,  }
+        { video, selectPopup, video,  }
+    }
+}

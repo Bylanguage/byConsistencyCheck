@@ -1,0 +1,68 @@
+﻿ku byTest
+{
+    data biao testTable [primaryKey(iD)] (
+    int iD [by.identity.ID, notNull]
+    , char char2 [by.identity.Attribute]
+    , byte byte2 [by.identity.Attribute]
+    , short short2 [by.identity.Attribute]
+    , int int2 [by.identity.Attribute]
+    , long long2 [by.identity.Attribute]
+    , float float2 [by.identity.Attribute]
+    , double double2 [by.identity.Attribute]
+    , decimal decimal2 [by.identity.Attribute]
+    , bool bool2 [by.identity.Attribute]
+    , datetime datatime [by.identity.Attribute]
+    , string string2 "string" [by.identity.Attribute]
+    , by.enum.DayOfWeek enum [by.identity.Attribute])
+    {
+        
+    }
+
+    config biao testTable.source "数据源配置表" (
+    string name "名称"
+    , string mode "模式"
+    , string[] actions "动作"
+    , string fieldAccess "字段访问"
+    , string[] settings "设置")
+    {
+        { iD, user, { select, insert }, iD, { name: "iD", text: "iD" } }
+        { char2, user, { insert, delete, update, select }, char2, { name: "char2", text: "char2" } }
+        { byte2, user, { insert, delete, update, select }, byte2, { name: "byte2", text: "byte2" } }
+        { short2, user, { insert, delete, update, select }, short2, { name: "short2", text: "short2" } }
+        { int2, user, { insert, delete, update, select }, int2, { name: "int2", text: "int2" } }
+        { long2, user, { insert, delete, update, select }, long2, { name: "long2", text: "long2" } }
+        { float2, user, { insert, delete, update, select }, float2, { name: "float2", text: "float2" } }
+        { double2, user, { insert, delete, update, select }, double2, { name: "double2", text: "double2" } }
+        { decimal2, user, { insert, delete, update, select }, decimal2, { name: "decimal2", text: "decimal2" } }
+        { bool2, client, { insert, delete, update, select }, bool2, { name: "bool2", text: "bool2", value: new bool[] { true, false } } }
+        { datatime "获取一个 DateTime对象, 该对象设置为此计算机上的当前日期和时间", server, { insert, delete, update, select }, datatime, { name: "datatime", text: "datatime", value: datetime.getNow() } }
+        { string2, user, { insert, delete, update, select }, string2, { name: "string2", text: "string" } }
+        { enum "获取枚举类型的枚举值数组", client, { insert, delete, update, select }, enum, { name: "enum", text: "enum", value: DayOfWeek.getValues() } }
+        { count,orm , ,:orm byTest.identity.testTable.MyOrm:.count ,  }
+        { max,orm , , :orm byTest.identity.testTable.MyOrm:.max,  }
+        { id,orm , , :orm byTest.identity.testTable.MyOrm:.id,  }
+        { number,orm , ,:orm byTest.identity.testTable.MyOrm:.number ,  }
+    }
+
+    config biao testTable.flow "数据流配置表" (
+    string name "名称"
+    , string action "动作"
+    , string[] sources "数据源(source.name)")
+    {
+        { insert, insert, { iD, char2, byte2, short2, int2, long2, float2, double2, decimal2, bool2, datatime, string2, enum } }
+        { update, update, { char2, byte2, short2, int2, long2, float2, double2, decimal2, bool2, datatime, string2, enum } }
+        { delete, delete, { iD } }
+        { select, select, { iD, char2, byte2, short2, int2, long2, float2, double2, decimal2, bool2, datatime, string2, enum } }
+        { popup, select, { iD } }
+        
+    }
+
+    config biao testTable.control "控件配置表" (
+    string name "名称"
+    , string[] types "控件类型"
+    , string[] sources "数据源(source.name)")
+    {
+        { edit, { EditArea, Grid }, { char2, byte2, short2, int2, long2, float2, double2, decimal2, bool2, datatime, string2, enum } }
+        { popup, { Grid, QueryArea }, { iD } }
+    }
+}

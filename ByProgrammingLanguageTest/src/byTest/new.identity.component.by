@@ -1,0 +1,25 @@
+﻿ku byTest
+{
+    new biao identity.component "身份实例构件表" (
+    string belong "所属身份实例"
+    , string name "名称"
+    , string to "标记项")
+    {
+        { testTable, iID, iD }
+        { testTable, iChar, char2 }
+        { testTable, iByte, byte2 }
+        { testTable, iShort, short2 }
+        { testTable, iint, int2 }
+        { testTable, iLong, long2 }
+        { testTable, iFloat, float2 }
+        { testTable, iDouble, double2 }
+        { testTable, idecimal, decimal2 }
+        { testTable, ibool, bool2 }
+        { testTable, iDatatime, datatime }
+        { testTable, iString, string2 }
+        { testTable, iEnum, enum }
+        { testOrm, iID, iD }
+        { testOrm, iNO, nO }
+        { testOrm, iName, name }
+    }
+}

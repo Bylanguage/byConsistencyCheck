@@ -1,0 +1,24 @@
+﻿ku ORMRow
+{
+    new biao identity "身份实例表" (
+    string name "名称"
+    , string type "身份类型"
+    , string to "标记项")
+    {
+        { sceneNews "表身份场景测试", ORMRow.identity.sceneNews, sceneNews }
+        { cmsSys "内容管理系统身份", CMS.identity.cmsSys,  }
+        { uRL "记录单个URL", CMS.identity.URL, uRL }
+        { category "文章分类表", CMS.identity.category, category }
+        { comment "评论", CMS.identity.comment, comment }
+        { webUI "页面显示栏目，支持category、columns、news", CMS.identity.webUI, webUI }
+        { columns "栏目表", CMS.identity.columns, columns }
+        { columnsNews "栏目新闻", CMS.identity.columnsNews, columnsNews }
+        { userCms "用户扩展表", CMS.identity.userCms, userCms }
+        { news "网页信息表，新闻信息表", CMS.identity.news, news }
+        { video "视频", CMS.identity.video, video }
+        { pageContent "文章内容页", CMS.identity.pageContent, "pageContent.html" }
+        { pageCategory "分类页", CMS.identity.pageCategory, "pageCategory.html" }
+        { home "主页", CMS.identity.home, "home.html" }
+        { home2 "web 站点主页", ORMRow.identity.Home, "index.html" }
+    }
+}

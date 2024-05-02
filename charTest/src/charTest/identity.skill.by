@@ -1,0 +1,87 @@
+﻿ku charTest
+{
+    system biao identity.skill "身份技能表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string[] scenes "场景"
+    , string[] modifiers "修饰符"
+    , string[] parameters "参数"
+    , string returnType "返回类型"
+    , string body "技能体")
+    {
+        { sartup, main "客户端入口点", { client,server }, { static }, { string[] args "启动参数"}, void, {
+            scene(client) 
+            {
+                var  tmpCharList = char65535.createCharString(); 
+                var tmpServerCharList = char65535.:server createCharString:();  
+                //if(tmpCharList.equals( tmpServerCharList ) )
+                if(tmpCharList != tmpServerCharList) 
+                {
+                    Message.alert("客户两端数据不一样！");
+                } 
+                else
+                {
+                    Message.alert("客户两端数据一样！");
+                } 
+                Message.alert("长度比对："+tmpCharList.length +"  "+ tmpServerCharList.length); 
+                if(tmpCharList.equals( tmpServerCharList)  )
+                {
+                    Message.alert("equals比对：客户两端数据不一样！");
+                } 
+                else
+                {
+                    Message.alert("equals比对：客户两端数据一样！");
+                } 
+                
+                char65535.serverCreateCharString(tmpCharList); //向服务端传送数据，测试服务端
+            }
+            scene(server) 
+            {
+                File.write("d:\\sartup.txt","heee..........",true); 
+            }
+        } } 
+        { sartup, mySkill, { client, server }, {  }, {  }, void, {
+            //请在此处写代码主体
+        } }
+        
+        { Home, main "网页主技能，重写此技能以实现自定义的网页初始化逻辑", { web }, {  }, { string queryArgs "网页当前参数字符串，即url中?符后面的内容" }, void, {
+            var  tmpCharList = char65535.createCharString(); 
+            var tmpServerCharList = char65535.:server createCharString:(); 
+            if(tmpCharList != tmpServerCharList) 
+            {
+                Message.alert("web 两端数据不一样！");
+            }
+            System.currentWindow.log("debug 54:tmpCharList 长度："+tmpCharList.length);
+           // this.pageWindow.document.body.innerText = tmpCharList; 
+            char65535.:server serverCreateCharString:(tmpCharList); //向服务端传送数据，测试服务端 
+            System.currentWindow.log("debug 46:post over!");
+        } }
+        { char65535, createCharString, {  }, { static }, {  }, string , { 
+            //char[] tmpChar = new char[65535]; 
+            StringBuilder tmpSb = new StringBuilder();
+            for (int i = 0; i < 65535; i++)
+            {
+               // tmpChar[i] = (char)i; 
+               tmpSb.append((char)i) ;
+            } 
+            //return tmpChar.toString(); 
+            return tmpSb.toString();
+        } } 
+        { char65535, serverCreateCharString, {  }, { static }, { string f_chartList }, void, {
+            scene(server) 
+            {
+                var  tmpServerCharList = createCharString(); 
+                if(f_chartList == tmpServerCharList) 
+                {
+                    File.write( "d:\\charEques"+pFinger+".txt","一样的\r\n"+ datetime.getNow().toString() , true );
+                }
+                else
+                {
+                    File.write( "d:\\charEques服务端内容"+pFinger+".txt",tmpServerCharList, true ); 
+                     File.write( "d:\\charEques前端内容"+pFinger+".txt",f_chartList, true );
+                }
+                pFinger ++;
+            }
+        } }
+    }
+}

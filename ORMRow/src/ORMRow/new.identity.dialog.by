@@ -1,0 +1,26 @@
+﻿ku ORMRow
+{
+    new biao identity.dialog "身份实例窗体表" (
+    string belong "所属身份实例"
+    , string name "名称"
+    , string to "标记项")
+    {
+        { sceneNews, newsModifAdd, {  } }
+        { sceneNews, manager, { cGrid: edit } }
+        { sceneNews, categoryTree, {  } }
+        { cmsSys, cmsManager, {  } }
+        { category, popup, { cMQueryArea: popup } }
+        { category, manage, { cEditArea: edit } }
+        { comment, reply, {  } }
+        { webUI, manage, { cGrid: sceneNews.:control edit: } }
+        { webUI, popup, { cGrid: sceneNews.:control edit:, cMQueryArea: sceneNews.:control popup: } }
+        { columns, manage, { cGrid: sceneNews.:control edit: } }
+        { columns, popup, { cGrid: sceneNews.:control edit:, cMQueryArea: sceneNews.:control popup: } }
+        { columnsNews, manage, { cGridLeft: edit, cGridRight: edit } }
+        { news, newsModifAdd, {  } }
+        { news, manager, { cGrid: sceneNews.:control edit: } }
+        { news, categoryTree, {  } }
+        { video, manage, { cGrid: sceneNews.:control edit:} }
+        { video, popup, { cGrid: sceneNews.:control edit:, cMQueryArea: sceneNews.:control popup: } }
+    }
+}

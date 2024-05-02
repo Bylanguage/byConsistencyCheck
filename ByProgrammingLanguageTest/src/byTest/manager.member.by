@@ -1,0 +1,11 @@
+﻿ku byTest
+{
+    system biao manager.member "窗体管理器成员表" (
+    string belong "所属类型"
+    , string name "名称"
+    , OBJECT value "值"
+    , string merge "合并项")
+    {
+        
+    }
+}

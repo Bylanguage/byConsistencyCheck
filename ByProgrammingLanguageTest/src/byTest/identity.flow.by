@@ -1,0 +1,10 @@
+﻿ku byTest
+{
+    system biao identity.flow "身份数据流表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string mode "模式")
+    {
+        
+    }
+}

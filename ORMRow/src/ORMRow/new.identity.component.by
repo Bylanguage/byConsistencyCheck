@@ -1,0 +1,119 @@
+﻿ku ORMRow
+{
+    new biao identity.component "身份实例构件表" (
+    string belong "所属身份实例"
+    , string name "名称"
+    , string to "标记项")
+    {
+        { sceneNews, iID, iD }
+        { sceneNews, iParentID, parentID }
+        { sceneNews, iCategoryID, categoryID }
+        { sceneNews, iTitle, title }
+        { sceneNews, iVideoID, videoID }
+        { sceneNews, iAbstract, abstract }
+        { sceneNews, iHtmlContent, htmlContent }
+        { sceneNews, iUserID, userID }
+        { sceneNews, iPV, pV }
+        { sceneNews, iComment, comment }
+        { sceneNews, iLike, like }
+        { sceneNews, iSort, sort }
+        { sceneNews, iDt, dt }
+        { sceneNews, rCmsSys, :new identity:.cmsSys }
+        { cmsSys, rUrl, :new identity:.uRL }
+        { cmsSys, rCategory, :new identity:.category }
+        { cmsSys, rComment, :new identity:.comment }
+        { cmsSys, rWebUI, :new identity:.webUI }
+        { cmsSys, rColumns, :new identity:.columns }
+        { cmsSys, rColumnsNews, :new identity:.columnsNews }
+        { cmsSys, rLog, byUser.:new identity:.log }
+        { cmsSys, rUser, byUser.:new identity:.user }
+        { cmsSys, rUserCms, :new identity:.userCms }
+        { cmsSys, rNews, :new identity:.news }
+        { cmsSys, rVideo, :new identity:.video }
+        { cmsSys, rPageContent, :new identity:.pageContent }
+        { cmsSys, rPageCategory, :new identity:.pageCategory }
+        { cmsSys, rHome, :new identity:.home }
+        { uRL, iID, iD }
+        { uRL, iSiteID, siteID }
+        { uRL, iPageUrl, pageUrl }
+        { uRL, iPageSort, pageSort }
+        { uRL, iUserID, userID }
+        { uRL, iIsLocalhost, isLocalhost }
+        { uRL, rCmsSys, :new identity:.cmsSys }
+        { category, iID, iD }
+        { category, iParent, parent }
+        { category, iName, name }
+        { category, iDt, dt }
+        { category, rCmsSys, :new identity:.cmsSys }
+        //{ category, rUser, byUser.:new identity:.user }
+        { comment, iID, iD }
+        { comment, iParent, parent }
+        { comment, iUserID, userID }
+        { comment, iNewsID, newsID }
+        { comment, iName, name }
+        { comment, iLike, like }
+        { comment, iIP, iP }
+        { comment, iIpCity, ipCity }
+        { comment, iDt, dt }
+        { comment, rCmsSys, :new identity:.cmsSys }
+        { webUI, iID, iD }
+        { webUI, iURL, uRL }
+        { webUI, iHtmlShowID, htmlShowID }
+        { webUI, iHtmlShowMode, htmlShowMode }
+        { webUI, iRowsCount, rowsCount }
+        { webUI, iWordCount, wordCount }
+        { webUI, iHref, href }
+        { webUI, rCmsSys, :new identity:.cmsSys }
+        { webUI, iName, name }
+        { webUI, iSummary, summary }
+        //{ webUI, rUser, byUser.:new identity:.user }
+        { columns, iID, iD }
+        { columns, iName, name }
+        { columns, rCmsSys, :new identity:.cmsSys }
+        { columns, iSummary, summary }
+        //{ columns, rUser, byUser.:new identity:.user }
+        { columnsNews, iID, iD }
+        { columnsNews, iLeft, left }
+        { columnsNews, iRight, right }
+        { columnsNews, rCmsSys, :new identity:.cmsSys }
+        //{ columnsNews, rUser, byUser.:new identity:.user }
+        { userCms, iID, iD }
+        { userCms, iUserShowName, userShowName }
+        { userCms, iIcoPath, icoPath }
+        { userCms, iDt, dt }
+        { userCms, rCmsSys, :new identity:.cmsSys }
+        { news, iID, iD }
+        { news, iParentID, parentID }
+        { news, iCategoryID, categoryID }
+        { news, iTitle, title }
+        { news, iVideoID, videoID }
+        { news, iAbstract, abstract }
+        { news, iHtmlContent, htmlContent }
+        { news, iUserID, userID }
+        { news, iPV, pV }
+        { news, iComment, comment }
+        { news, iLike, like }
+        { news, iSort, sort }
+        { news, iDt, dt }
+        { news, rCmsSys, :new identity:.cmsSys }
+        { video, iID, iD }
+        { video, iName, name }
+        { video, iSummary, summary }
+        { video, iUser, user }
+        { video, iUrl, url }
+        { video, iMode, mode }
+        { video, iDt, dt }
+        { video, rUser, byUser.:new identity:.user }
+        { pageContent, iNavigation, "navigation" }
+        { pageContent, iTitle, "title" }
+        { pageContent, iStatistic, "statistic" }
+        { pageContent, iHtmlContent, "htmlContent" }
+        { pageContent, iComment, "comment" }
+        { pageContent, rCmsSys, :new identity:.cmsSys }
+        { pageCategory, iTitle, "title" }
+        { pageCategory, iColumnsDetail, "columnsDetail" }
+        { pageCategory, iPaging, "paging" }
+        { pageCategory, rCmsSys, :new identity:.cmsSys }
+        { home, rCmsSys, :new identity:.cmsSys }
+    }
+}

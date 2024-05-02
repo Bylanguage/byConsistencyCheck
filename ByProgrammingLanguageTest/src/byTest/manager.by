@@ -1,0 +1,10 @@
+﻿ku byTest
+{
+    system biao manager "窗体管理器表" (
+    string name "名称"
+    , string[] scenes "场景"
+    , string[] initializers "初始值")
+    {
+        
+    }
+}

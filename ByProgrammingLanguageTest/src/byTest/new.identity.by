@@ -1,0 +1,12 @@
+﻿ku byTest
+{
+    new biao identity "身份实例表" (
+    string name "名称"
+    , string type "身份类型"
+    , string to "标记项")
+    {
+        { testTable "测试表", byTest.identity.testTable, testTable }
+        { home, byTest.identity.home, "index.html" }
+        { testOrm "测试orm", byTest.identity.testOrm, testOrm }
+    }
+}

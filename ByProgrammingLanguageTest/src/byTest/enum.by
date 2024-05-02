@@ -1,0 +1,9 @@
+﻿ku byTest
+{
+    system biao enum "枚举类型表" (
+    string name "名称"
+    , string[] values "枚举值")
+    {
+        
+    }
+}

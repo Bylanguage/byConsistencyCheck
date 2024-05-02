@@ -1,0 +1,55 @@
+﻿ku ORMRow
+{
+    data biao webUI [primaryKey(iD)] (
+    string iD "编号，页面div等ID的名称" [by.identity.ID, notNull]
+    , string uRL "URL标识" [by.identity.Attribute]
+    , string htmlShowID "要显示的ID[分类、栏目、新闻]之一" [by.identity.Attribute]
+    , CMS.enum.UIMode htmlShowMode "显示模式" [by.identity.Attribute]
+    , int rowsCount "显示条数" [by.identity.Attribute]
+    , int wordCount "界面一条要显示字数" [by.identity.Attribute]
+    , string href "点击后要转向到的页面，后面会自动加入?id=对应的新闻ID值" [by.identity.Attribute]
+    , string name "名称" [by.identity.Name, notNull]
+    , string summary "说明" [by.identity.Attribute])
+    {
+        
+    }
+
+    config biao webUI.source "数据源配置表。必须配置 SQL 后才有效，例 select [config 配置名], a.* from this, 直接写 select a.* from this 则相关配置无效" (
+    string name "名称"
+    , string mode "模式"
+    , string[] actions "动作"
+    , string fieldAccess "字段访问"
+    , string[] settings "设置")
+    {
+        { iD, user, { select, insert }, iD, { name: "iD", text: "编号，页面div等ID的名称" } }
+        { uRL, user, { insert, delete, update, select }, uRL, { name: "uRL", text: "URL标识" } }
+        { htmlShowID, user, { insert, delete, update, select }, htmlShowID, { name: "htmlShowID", text: "要显示的ID[分类、栏目、新闻]之一" } }
+        { htmlShowMode "获取枚举类型的枚举值数组", client, { insert, delete, update, select }, htmlShowMode, { name: "htmlShowMode", text: "显示模式", value: UIMode.getValues() } }
+        { rowsCount, user, { insert, delete, update, select }, rowsCount, { name: "rowsCount", text: "显示条数" } }
+        { wordCount, user, { insert, delete, update, select }, wordCount, { name: "wordCount", text: "界面一条要显示字数" } }
+        { href, user, { insert, delete, update, select }, href, { name: "href", text: "点击后要转向到的页面，后面会自动加入?id=对应的新闻ID值" } }
+        { name, user, { insert, delete, update, select }, name, { name: "name", text: "名称" } }
+        { summary, user, { insert, delete, update, select }, summary, { name: "summary", text: "说明" } }
+    }
+
+    config biao webUI.flow "数据流配置表" (
+    string name "名称"
+    , string action "动作"
+    , string[] sources "数据源(source.name)")
+    {
+        { insert, insert, { iD, uRL, htmlShowID, htmlShowMode, rowsCount, wordCount, href, name, summary } }
+        { update, update, { uRL, htmlShowID, htmlShowMode, rowsCount, wordCount, href, name, summary } }
+        { delete, delete, { iD } }
+        { select, select, { iD, uRL, htmlShowID, htmlShowMode, rowsCount, wordCount, href, name, summary } }
+        { popup, select, { iD, name } }
+    }
+
+    config biao webUI.control "控件配置表" (
+    string name "名称"
+    , string[] types "控件类型"
+    , string[] sources "数据源(source.name)")
+    {
+        { edit, { Grid, EditArea }, { uRL, htmlShowID, htmlShowMode, rowsCount, wordCount, href, name, summary } }
+        { popup, { Grid, QueryArea }, { iD, name } }
+    }
+}

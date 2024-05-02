@@ -1,0 +1,47 @@
+﻿ku byTest
+{
+    system biao identity "身份类型表" (
+    string name "名称"
+    , string[] scenes "场景"
+    , string[] modifiers "修饰符"
+    , string kind "类型类别"
+    , string inheritance "继承项"
+    , string[] implementations "实现接口"
+    , string constraints "约束项")
+    {
+        { ClientStart "客户端入口身份", { client }, , identity, by.identity.Role, {  },  }
+        { ServerStart "服务端入口身份", { server }, , identity, by.identity.Role, {  },  }
+        { home "网页端入口身份", { web }, , identity, by.identity.Page, {  },  } 
+        
+        { testTable "测试表", { client, server, web }, {  }, identity, by.identity.Table, {  },  }
+        { testOrm "测试orm", { client, server, web }, {  }, identity, by.identity.Table, {  },  }
+        
+        { tString "测试string", { client, server, web,database }, {  },identity , , ,  } 
+        { tObject"测试object",{client,server,web,database} , , identity, , ,  } 
+        { tChar"测试Char",{client,server,web,database} , ,identity ,,,  }
+        { tByte"测试byte",{client,server,web,database} , ,identity , , ,  }
+        { tShort"测试short",{client,server,web,database} , ,identity , , ,  }
+        { tLong "测试long", { client, server, web,database }, {  }, identity,, {  },  }
+        { tInt "测试int", { client, server, web,database }, {  }, identity,, {  },  }
+        { tFloat"测试float", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDouble "测试double", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDecimal "测试Decimal", { client, server, web,database }, {  }, identity, , {  },  }
+        { tBool "测试Bool", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDateTime "测试DateTime", { client, server, web,database }, {  }, identity, , {  },  }
+        { tTimer "测试timer", { client, server, web,database }, {  }, identity, , {  },  }  
+        { tSystem "测试system", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDirectory "测试Directory", { client, server, web,database }, {  }, identity, , {  },  }
+        { tFile "测试File", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDataTran "测试web和server信息传输", { client, server, web,database }, {  }, identity, , {  },  }
+        { tMath "测试数学函数", { client, server, web,database }, {  }, identity, , {  },  }  
+        { tStack "测试stack", { client, server, web,database }, {  }, identity, , {  },  }
+        { tqueue "测试queue", { client, server, web,database }, {  }, identity, , {  },  }  
+        { tHashSet "测试HashSet", { client, server, web,database }, {  }, identity, , {  },  }
+        { tDictionary "测试dictionary", { client, server, web,database }, {  }, identity, , {  },  } 
+        { tStringBuilder "测试stringbuilder", { client, server, web,database }, {  }, identity, , {  },  }
+        { tSql "测试sql", { client, server, web }, {  }, identity, , {  },  }
+        { MyTable "表身份", { client, server, web }, {  }, identity, by.identity.Table, {  },  }
+        
+        { writeLog "写日志", { client,web, server }, {  }, identity, , {  },  }
+    }
+}

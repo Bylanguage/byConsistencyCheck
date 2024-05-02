@@ -1,0 +1,12 @@
+﻿ku byTest
+{
+    system biao identity.action "身份动作表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string[] parameters "参数"
+    , string returnType "返回类型"
+    , string body "动作体")
+    {
+        
+    }
+}

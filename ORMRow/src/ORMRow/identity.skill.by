@@ -1,0 +1,142 @@
+﻿ku ORMRow
+{
+    system biao identity.skill "身份技能表" (
+    string belong "所属类型"
+    , string name "名称"
+    , string[] scenes "场景"
+    , string[] modifiers "修饰符"
+    , string[] parameters "参数"
+    , string returnType "返回类型"
+    , string body "技能体")
+    {
+        { ClientStartup, main "客户端入口点", { client }, { static }, { string[] args "启动参数"}, void, {
+            Message.alert("......start..开始检测各端.......");
+            try
+            {
+                var tmpRow = :new identity:.sceneNews.createCommentRow(); 
+                var tmpRowServer = :new identity:.sceneNews.:server createCommentRow:(); 
+                if(tmpRow.a.equals( tmpRowServer.a )  || tmpRow.b.equals( tmpRowServer.b )  ) 
+                {
+                    Message.alert("debug 20 ORM test 不一样");
+                }
+                else
+                {
+                    Message.alert("debug 24 ORM test 一样的");
+                } 
+                
+                var tmpRowList = :new identity:.sceneNews.createRowList(); 
+                var tmpRowServerList = :new identity:.sceneNews.:server createRowList:();  
+                for (int i = 0; i < tmpRowServerList.count; i++)
+                {
+                    if( tmpRowList[i].equals( tmpRowServerList[i] ) ) 
+                    {
+                        var tmpa = tmpRowList[i].toString() ;
+                        var tmpB = tmpRowServerList[i].toString() ;
+                        Message.alert( tmpRowList[i].toString() + tmpRowServerList[i].toString()); 
+                        File.write( "d:\\row.txt" , "" , true );
+                        //System.currentWindow.log("debug 54 row test 不一样");
+                    }
+                    else
+                    {
+                        //System.currentWindow.log("debug 58 row test 一样的");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Message.alert( ex.message );
+            }
+        } }
+        { ServerStartup, main "服务端入口点", { server }, { static }, { string[] args "启动参数" }, void, {
+            
+        } }
+        { Home, main "网页主技能，重写此技能以实现自定义的网页初始化逻辑", { web }, {  }, { string queryArgs "网页当前参数字符串，即url中?符后面的内容" }, void, {
+            Message.alert("debug 37  ......start..开始检测各端 ，请按f12开启控制台.......");
+            var tmpRow = :new identity:.sceneNews.createCommentRow(); 
+            var tmpRowServer = :new identity:.sceneNews.:server createCommentRow:(); 
+            if(tmpRow.a.equals( tmpRowServer.a )  || tmpRow.b.equals( tmpRowServer.b )  ) 
+            {
+               System.currentWindow.log("debug 42 ORM test 不一样");
+            }
+            else
+            {
+                System.currentWindow.log("debug 46 ORM test 一样的");
+            }
+            var tmpRowList = :new identity:.sceneNews.createRowList(); 
+            var tmpRowServerList = :new identity:.sceneNews.:server createRowList:();   
+            var tmpDiffList = new StringBuilder();
+            for (int i = 0; i < tmpRowServerList.count; i++)
+            {
+                if( tmpRowList[i].equals( tmpRowServerList[i] ) ) 
+                {
+                    //for (int j = 0; j < tmpRowServerList[i].cells.count ; j++)
+                    //{
+                    //    if( tmpRowList[i].cells[j].value !=  tmpRowServerList[i].cells[j].value ) 
+                    //    {
+                    //        System.currentWindow.log(  tmpRowList[i].cells[j].value ); 
+                    //        System.currentWindow.log(   tmpRowServerList[i].cells[j].value );
+                    //    }
+                    //} 
+                    
+                    System.currentWindow.log("debug 54 row test 不一样,如下两行："); 
+                    System.currentWindow.log( tmpRowList[i].toString() ); 
+                    System.currentWindow.log(  tmpRowServerList[i].toString() ); 
+                }
+                else
+                {
+                    System.currentWindow.log("debug 58 row test 一样的");
+                } 
+                
+            } 
+        } }
+        { sceneNews, createCommentRow , {  }, {  }, {  }, newsCommentOrm, {
+            return newsCommentOrm.create(new Row()~this.rCmsSys.rComment , new Row()~this  ) ;
+        } }  
+        { sceneNews, createRowList , {  }, {  }, {  }, List<Row~Table> , {
+            var tmpResultList = new List<Row~Table>();
+            tmpResultList.add(new Row()~this); 
+            tmpResultList.add(new Row()~this.rCmsSys.rCategory);
+            tmpResultList.add(new Row()~this.rCmsSys.rColumns);
+            tmpResultList.add(new Row()~this.rCmsSys.rColumnsNews);
+            tmpResultList.add(new Row()~this.rCmsSys.rComment);
+            tmpResultList.add(new Row()~this.rCmsSys.rLog);
+            tmpResultList.add(new Row()~this.rCmsSys.rNews);
+            tmpResultList.add(new Row()~this.rCmsSys.rUrl);
+            tmpResultList.add(new Row()~this.rCmsSys.rUser);
+            tmpResultList.add(new Row()~this.rCmsSys.rUserCms);
+            tmpResultList.add(new Row()~this.rCmsSys.rVideo);
+            return tmpResultList;
+        } } 
+        { sceneNews, test , {  }, {  }, {  }, void, {
+            scene(web,client) 
+            {
+                var tmpCurOrm = createCommentRow();
+                var tmpServerOrm = this.:server createCommentRow:();  
+                tmpServerOrm.a.iDt = datetime.getNow();
+                tmpServerOrm.a.iID = "2341"; 
+                tmpServerOrm.a.iIP ="123.23.0.0";
+                tmpServerOrm.a.iIpCity =""; 
+                tmpServerOrm.a.iLike = 12;
+                tmpServerOrm.a.iName ="";
+                tmpServerOrm.a.iNewsID ="s"; 
+                tmpServerOrm.a.iParent ="sdfsdf"; 
+                tmpServerOrm.a.iUserID ="sdfasdfsdf"; 
+                
+                tmpServerOrm.b.iAbstract = "asdf"; 
+                tmpServerOrm.b.iCategoryID ="";
+                tmpServerOrm.b.iComment = 4434;
+                tmpServerOrm.b.iDt = datetime.getNow();
+                tmpServerOrm.b.iHtmlContent ="asdf"; 
+                tmpServerOrm.b.iID = "";
+                tmpServerOrm.b.iLike = 009;
+                tmpServerOrm.b.iParentID ="";
+                tmpServerOrm.b.iPV = 2; 
+                tmpServerOrm.b.iSort = 0;
+                
+                tmpCurOrm.decimalValue = 0;
+                tmpCurOrm.intValue = 1;
+                tmpCurOrm.stringValue = "00";
+            }
+        } }
+    }
+}
